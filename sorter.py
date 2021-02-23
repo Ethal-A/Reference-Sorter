@@ -1,4 +1,5 @@
 import sys
+import re
 
 def sort_references(references):
     '''
@@ -6,8 +7,11 @@ def sort_references(references):
     
     @returns list of references in sorted alphabetical order
 
-    Ignores all non-latin characters (a-z, A-Z)
+    Ignores all non-latin characters (sorts only bazed on a-z and A-Z)
     '''
+    # Ignore all non-latin characters and sort
+    references = sorted(references, key=lambda x: re.sub('[^A-Za-z]+', '', x).lower())
+    return references
 
 try:
     # Get parameters, (file name)
@@ -18,7 +22,7 @@ try:
 
     # Read file contents
     content = file_link.read().split('\n')
-    print(content)
+    print(sort_references(content))
 except Exception as err:
     print(err)
 
