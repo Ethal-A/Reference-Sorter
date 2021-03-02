@@ -50,7 +50,7 @@ def sort_clicked():
 
     text_box.replace("1.0", tk.END, references)
 
-sort_button = tk.Button(root, text="Sort", padx=100, pady=5, fg="white", bg="black", command=sort_clicked)
+sort_button = tk.Button(root, text="Sort", padx=100, pady=5, fg="white", bg="#263D42", command=sort_clicked)
 sort_button.pack()
 
 # Loop to run continously
