@@ -1,8 +1,8 @@
 # Refernece-Sorter
 Reference-Sorter is a python script which sorts a list of references for the user in a line by line order.
 
-## Usage
-Simply create file containing the list of references (empty spaces will be ignored). For this example, the file will be called 'references.txt'. Please note that any there should be no new lines inside a single reference. There may be however, a new line between references.
+## Format Restrictions
+Please note that any there should be no new lines inside a single reference. There may be however, a new line between references.
 
 The following should work:
 ```
@@ -20,7 +20,16 @@ Wikipedia, n.d., Wikipedia:Wikipedia is not a reliable source, viewed 23 Feb 202
 https://en.wikipedia.org/wiki/Wikipedia:Wikipedia_is_not_a_reliable_source
 ```
 
+## Usage - GUI
+Simply run the sorter GUI by using the following command:
+`python3 sorter_gui.py`
+
+Paste the references into the text box provided (empty lines will be ignored) and click the sort button to sort the references.
+
+## Usage - Script
+Simply create file containing the list of references (empty lines will be ignored). For this example, the file will be called 'references.txt'.
+
 To sort the references simply use the command:
-`python3 sorter references.txt`
+`python3 sorter.py references.txt`
 
 The script will output a file called 'references (sorted).txt' which contains a sorted list of the provided references.
