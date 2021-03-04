@@ -1,7 +1,11 @@
 import tkinter as tk
-from tkinter import filedialog, Text
+from tkinter import messagebox
 import os
 import re
+
+# Parameters
+app_width = 700
+app_height = 700
 
 def sort_references(references):
     '''
@@ -24,11 +28,12 @@ def sort_references(references):
     return filtered_references
 
 root = tk.Tk()
-root.maxsize(700, 700)
-root.minsize(700, 700)
+# TODO, make screen not resize-able and remove the full screen option
+root.maxsize(app_width, app_height)
+root.minsize(app_width, app_height)
 
 # Defining GUI layout
-canvas = tk.Canvas(root, height=700, width=700, bg="#263D42")
+canvas = tk.Canvas(root, height=app_height, width=app_width, bg="#263D42")
 canvas.pack(pady=10)
 
 # Frame (inside) layout
@@ -37,6 +42,9 @@ canvas.pack(pady=10)
 
 text_box = tk.Text(canvas, height=40, fg="white", bg="#263D42")
 text_box.pack()
+
+def help_clicked():
+    messagebox.showinfo(title='Help', message="")
 
 def sort_clicked():
     '''
@@ -50,8 +58,11 @@ def sort_clicked():
 
     text_box.replace("1.0", tk.END, references)
 
-sort_button = tk.Button(root, text="Sort", padx=100, pady=5, fg="white", bg="#263D42", command=sort_clicked)
-sort_button.pack()
+sort_button = tk.Button(root, text="Sort", padx=50, pady=5, fg="white", bg="#263D42", command=sort_clicked)
+sort_button.place(x=(app_width / 2 - 50), y=660)
+
+help_button = tk.Button(root, text="Help", padx=20, pady=5, fg="white", bg="#263D42", command=help_clicked)
+help_button.place(x=27,y=660)
 
 # Loop to run continously
 root.mainloop()
