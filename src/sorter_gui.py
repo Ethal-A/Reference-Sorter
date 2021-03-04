@@ -17,8 +17,7 @@ class Sorter:
         # Set title and icon
         # Note that the file location doesn't work when exporting the script as an executable. So instead, the source code of the image is provided using https://www.motobit.com/util/base64-decoder-encoder.asp.
         # Alternatively:
-        # icon_location = 'images/icon.png'
-        # img = tk.PhotoImage(file='images/icon.png')
+        # img = tk.PhotoImage(file='../images/icon.png')
         data = '''iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAIAAAAlC+aJAAAAAXNSR0IArs4c6QAAAARnQU1BAACx
 jwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAgkSURBVGhD7Zl7TM1hH8CPu9Rel+JNZeRWIhqi
 i+uslCmX3iymEDY1NvdLw9zG24wxNmvTMJcxxiraXEruUuY2lZhSyuWl3Aq5vZ9znscp5/Q7/Tq9
