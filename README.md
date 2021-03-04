@@ -2,7 +2,7 @@
 Reference-Sorter is a python script which sorts a list of references for the user in a line by line order.
 
 ## Format Restrictions
-Please note that any there should be no new lines inside a single reference. There may be however, a new line between references.
+Please note that any there should be **no new lines inside a single reference.** There may be however, a new line between references.
 
 The following should work:
 ```
@@ -33,3 +33,6 @@ To sort the references simply use the command:
 `python3 sorter.py references.txt`
 
 The script will output a file called 'references (sorted).txt' which contains a sorted list of the provided references.
+
+## Git Commit Convention
+All new git commits use the convention found on [Semantic Commit Messages GitHub](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716) 
