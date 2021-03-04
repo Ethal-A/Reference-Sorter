@@ -27,10 +27,16 @@ def sort_references(references):
         filtered_references += ref + ('\n\n' if ref != references[len(references) - 1] else '')
     return filtered_references
 
+# Setting window parameters
 root = tk.Tk()
-# TODO, make screen not resize-able and remove the full screen option
-root.maxsize(app_width, app_height)
+root.title('Reference Sorter')
+
+# Set icon
+img = tk.PhotoImage(file='images/icon.png')
+root.tk.call('wm', 'iconphoto', root._w, img)
+
 root.minsize(app_width, app_height)
+root.resizable(False, False)
 
 # Defining GUI layout
 canvas = tk.Canvas(root, height=app_height, width=app_width, bg=background_colour)
