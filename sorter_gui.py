@@ -2,70 +2,76 @@ import tkinter as tk
 import webbrowser
 import re
 
-# Parameters
-background_colour = '#263D42'
-app_width = 700
-app_height = 700
+class Sorter:
+    def __init__(self, app_width=700, app_height=700, background_colour='#263D42'):
+        # Set parameters
+        self.app_width = app_width
+        self.app_height = app_height
+        self.background_colour = background_colour
 
-def sort_references(references):
-    '''
-    @param references: a list of references
+        # Setup window
+        self.root = tk.Tk()
+        self.root.minsize(app_width, app_height)
+        self.root.resizable(False, False)
+        
+        # Set title and icon
+        self.root.title('Reference Sorter')
+        img = tk.PhotoImage(file='images/icon.png')
+        self.root.tk.call('wm', 'iconphoto', self.root._w, img)
+
+        # Defining input text box
+        self.canvas = tk.Canvas(self.root, height=app_height, width=app_width, bg=background_colour)
+        self.canvas.pack(pady=10)
+        self.text_box = tk.Text(self.canvas, height=40, fg='white', bg=background_colour)
+        self.text_box.pack()
+
+        # Defining buttons
+        self.sort_button = tk.Button(self.root, text='Sort', padx=50, pady=5, fg='white', bg=background_colour, command=self.sort_clicked)
+        self.sort_button.place(x=(app_width / 2 - 50), y=660)
+
+        self.help_button = tk.Button(self.root, text='Help', padx=20, pady=5, fg='white', bg=background_colour, command=self.help_clicked)
+        self.help_button.place(x=27,y=660)
+
+        # Loop to run continously (runs application)
+        self.root.mainloop()
     
-    @returns list of references in sorted alphabetical order
+    def sort_references(self, references):
+        '''
+        @param references: a list of references
+        
+        @returns list of references in sorted alphabetical order
 
-    Ignores all non-latin characters (sorts only bazed on a-z and A-Z)
-    '''
-    # Ignore all non-latin characters and sort
-    references = sorted(references, key=lambda x: re.sub('[^A-Za-z]+', '', x).lower())
-    
-    # filter references
-    filtered_references = ''
-    for ref in references:
-        # Check if empty string or just new line
-        if (len(ref) == 0 or ref == '\n'):
-            continue
-        filtered_references += ref + ('\n\n' if ref != references[len(references) - 1] else '')
-    return filtered_references
+        Ignores all non-latin characters (sorts only bazed on a-z and A-Z)
+        '''
+        # Ignore all non-latin characters and sort
+        references = sorted(references, key=lambda x: re.sub('[^A-Za-z]+', '', x).lower())
+        
+        # filter references
+        filtered_references = ''
+        for ref in references:
+            # Check if empty string or just new line
+            if (len(ref) == 0 or ref == '\n'):
+                continue
+            filtered_references += ref + ('\n\n' if ref != references[len(references) - 1] else '')
+        return filtered_references
 
-# Setting window parameters
-root = tk.Tk()
-root.title('Reference Sorter')
+    def help_clicked(self):
+        '''
+        Opens up the GitHub README.md for this application
+        '''
+        webbrowser.open('https://github.com/Ethal-Askander/Reference-Sorter/blob/main/README.md', new=1)
 
-# Set icon
-img = tk.PhotoImage(file='images/icon.png')
-root.tk.call('wm', 'iconphoto', root._w, img)
+    def sort_clicked(self):
+        '''
+        Gets current text, sorts it and replaced the current text with the sorted text.
+        '''
+        # Get the references
+        references = self.text_box.get('1.0', tk.END).split('\n')
 
-root.minsize(app_width, app_height)
-root.resizable(False, False)
+        # Sort the references
+        references = self.sort_references(references)
 
-# Defining GUI layout
-canvas = tk.Canvas(root, height=app_height, width=app_width, bg=background_colour)
-canvas.pack(pady=10)
+        self.text_box.replace('1.0', tk.END, references)
 
-# Input
-text_box = tk.Text(canvas, height=40, fg='white', bg=background_colour)
-text_box.pack()
-
-def help_clicked():
-    webbrowser.open('https://github.com/Ethal-Askander/Reference-Sorter/blob/main/README.md', new=1)
-
-def sort_clicked():
-    '''
-    Gets current text, sorts it and replaced the current text with the sorted text.
-    '''
-    # Get the references
-    references = text_box.get('1.0', tk.END).split('\n')
-
-    # Sort the references
-    references = sort_references(references)
-
-    text_box.replace('1.0', tk.END, references)
-
-sort_button = tk.Button(root, text='Sort', padx=50, pady=5, fg='white', bg=background_colour, command=sort_clicked)
-sort_button.place(x=(app_width / 2 - 50), y=660)
-
-help_button = tk.Button(root, text='Help', padx=20, pady=5, fg='white', bg=background_colour, command=help_clicked)
-help_button.place(x=27,y=660)
-
-# Loop to run continously
-root.mainloop()
+# Run Application
+Sorter()
