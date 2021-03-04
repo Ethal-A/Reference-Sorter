@@ -3,7 +3,7 @@ import webbrowser
 import re
 
 class Sorter:
-    def __init__(self, app_width=700, app_height=700, background_colour='#263D42'):
+    def __init__(self, app_width=700, app_height=700, background_colour='#263D42', cursor='white'):
         # Set parameters
         self.app_width = app_width
         self.app_height = app_height
@@ -22,7 +22,7 @@ class Sorter:
         # Defining input text box
         self.canvas = tk.Canvas(self.root, height=app_height, width=app_width, bg=background_colour)
         self.canvas.pack(pady=10)
-        self.text_box = tk.Text(self.canvas, height=40, fg='white', bg=background_colour)
+        self.text_box = tk.Text(self.canvas, height=40, fg='white', bg=background_colour, insertbackground=cursor, insertwidth=3)
         self.text_box.pack()
 
         # Defining buttons
@@ -33,16 +33,16 @@ class Sorter:
         self.help_button.place(x=27,y=660)
 
         # Change colour buttons
-        self.colour1 = tk.Button(self.root, padx=20, pady=5, bg='black', command=lambda : self.set_bg_colour('black'))
+        self.colour1 = tk.Button(self.root, padx=20, pady=5, bg='black', command=lambda : self.set_colours(bg='black', cursor='white'))
         self.colour1.place(x=(app_width/2 + 150 - 28), y=660)
 
-        self.colour2 = tk.Button(self.root, padx=20, pady=5, bg='#263D42', command=lambda : self.set_bg_colour('#263D42'))
+        self.colour2 = tk.Button(self.root, padx=20, pady=5, bg='#263D42', command=lambda : self.set_colours(bg='#263D42', cursor='white'))
         self.colour2.place(x=(app_width/2 + 200 - 28), y=660)
 
-        self.colour3 = tk.Button(self.root, padx=20, pady=5, bg='#063970', command=lambda : self.set_bg_colour('#063970'))
+        self.colour3 = tk.Button(self.root, padx=20, pady=5, bg='#063970', command=lambda : self.set_colours(bg='#063970', cursor='white'))
         self.colour3.place(x=(app_width/2 + 250 - 28), y=660)
 
-        self.colour4 = tk.Button(self.root, padx=20, pady=5, bg='#2596be', command=lambda : self.set_bg_colour('#2596be'))
+        self.colour4 = tk.Button(self.root, padx=20, pady=5, bg='#2596be', command=lambda : self.set_colours(bg='#2596be', cursor='white'))
         self.colour4.place(x=(app_width/2 + 300 - 28), y=660)
 
         # Loop to run continously (runs application)
@@ -86,17 +86,17 @@ class Sorter:
 
         self.text_box.replace('1.0', tk.END, references)
 
-    def set_bg_colour(self, colour):
+    def set_colours(self, fg='white', bg='#263D42', cursor='white'):
         '''
         @param colour
 
         Changes the background colour of all items on the window to the given colour
         '''
-        self.background_colour = colour
-        self.canvas.configure(bg=colour)
-        self.text_box.configure(bg=colour)
-        self.sort_button.configure(bg=colour)
-        self.help_button.configure(bg=colour)
+        self.background_colour = bg
+        self.canvas.configure(bg=bg)
+        self.text_box.configure(fg=fg, bg=bg, insertbackground=cursor)
+        self.sort_button.configure(fg=fg, bg=bg,)
+        self.help_button.configure(fg=fg, bg=bg,)
 
 # Run Application
 Sorter()
