@@ -28,6 +28,11 @@ Simply run the sorter GUI by using the following command:
 
 Paste the references into the text box provided (empty lines will be ignored) and click the sort button to sort the references.
 
+**Shortcuts and other (Windows):**
+- Change background colour: use coloured buttons on bottom right.
+- Undo: ctrl + z
+- Redo: ctrl + y
+
 ## Usage - Script
 Simply create file containing the list of references (empty lines will be ignored). For this example, the file will be called 'references.txt'.
 

@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter.constants import WORD
 import webbrowser
 import re
 
@@ -64,7 +65,7 @@ ZdFo/gtjVjsJHoDhWAAAAABJRU5ErkJggg=='''
         # Defining input text box
         self.canvas = tk.Canvas(self.root, height=app_height, width=app_width, bg=background_colour)
         self.canvas.pack(pady=10)
-        self.text_box = tk.Text(self.canvas, height=40, fg='white', bg=background_colour, insertbackground=cursor, insertwidth=3)
+        self.text_box = tk.Text(self.canvas, height=40, fg='white', bg=background_colour, insertbackground=cursor, insertwidth=3, undo=True, wrap=WORD)
         self.text_box.pack()
 
         # Defining buttons
