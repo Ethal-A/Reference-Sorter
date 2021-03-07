@@ -1,5 +1,7 @@
 # Refernece-Sorter
-Reference-Sorter is a python script which sorts a list of references for the user in a line by line order.
+Reference-Sorter is a python script which sorts a list of references for the user in alphabetical order ignoring all non-latin characters (A-Z and a-z only). Alongside the python script is a graphical user interface version using the Tkinter python library.
+
+![Reference-Sorter Showcase](images/showcase.png)
 
 ## Format Restrictions
 Please note that any there should be **no new lines inside a single reference.** There may be however, a new line between references.
