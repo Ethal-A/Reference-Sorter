@@ -30,6 +30,8 @@ Paste the references into the text box provided (empty lines will be ignored) an
 
 **Shortcuts and other (Windows):**
 - Change background colour: use coloured buttons on bottom right.
+- Copy: ctrl + c
+- Paste: ctrl + v
 - Undo: ctrl + z
 - Redo: ctrl + y
 
