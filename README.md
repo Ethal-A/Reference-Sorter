@@ -1,6 +1,8 @@
 # Refernece-Sorter
 Reference-Sorter is a python script which sorts a list of references for the user in alphabetical order ignoring all non-latin characters (A-Z and a-z only). Alongside the python script is a graphical user interface version using the Tkinter python library.
 
+Please note that the graphical user interface (GUI) of the application was made specifically for Windows and has issues when running on MacOS. Button colours and text do not show properly (especially in dark theme), to fix this, they are given a 'highlight background colour' which unfortunately does not look as nice compared to Windows.
+
 ![Reference-Sorter Showcase](images/showcase.png)
 
 ## Format Restrictions
