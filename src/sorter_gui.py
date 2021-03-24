@@ -3,6 +3,9 @@ from tkinter.constants import WORD
 import webbrowser
 import re
 
+# References: 
+# Background colour hex '#263D42' is from the following tkinter tutorial video: https://www.youtube.com/watch?v=jE-SpRI3K5g&t=551s
+# Sorting latin characters ignoring all special characters (the 1 line code that does it): https://stackoverflow.com/questions/13589560/how-to-sort-list-of-string-without-considering-special-characters-and-with-case
 class Sorter:
     def __init__(self, app_width=700, app_height=700, background_colour='#263D42', cursor='white'):
         # Set parameters

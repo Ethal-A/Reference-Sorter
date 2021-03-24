@@ -2,6 +2,10 @@ import sys
 import os
 import re
 
+# References:
+# Sorting latin characters ignoring all special characters (the 1 line code that does it): https://stackoverflow.com/questions/13589560/how-to-sort-list-of-string-without-considering-special-characters-and-with-case
+
+
 def sort_references(references):
     '''
     @param references: a list of references
