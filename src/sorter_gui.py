@@ -9,6 +9,9 @@ from sys import platform # Used only to allow the program to work when used on M
 # Sorting latin characters ignoring all special characters (the 1 line code that does it): https://stackoverflow.com/questions/13589560/how-to-sort-list-of-string-without-considering-special-characters-and-with-case
 class Sorter:
     def __init__(self, app_width=700, app_height=700, background_colour='#263D42', cursor='white'):
+        # Used to check if in MacOS
+        self.platform_osx = 'darwin' in platform
+
         # Set parameters
         self.app_width = app_width
         self.app_height = app_height
@@ -23,7 +26,7 @@ class Sorter:
         # Note that the file location doesn't work when exporting the script as an executable. So instead, the source code of the image is provided using https://www.motobit.com/util/base64-decoder-encoder.asp.
         # Alternatively:
         # img = tk.PhotoImage(file='../images/icon.png')
-        if 'darwin' not in platform:
+        if not self.platform_osx:
             data = '''iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAIAAAAlC+aJAAAAAXNSR0IArs4c6QAAAARnQU1BAACx
     jwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAgkSURBVGhD7Zl7TM1hH8CPu9Rel+JNZeRWIhqi
     i+uslCmX3iymEDY1NvdLw9zG24wxNmvTMJcxxiraXEruUuY2lZhSyuWl3Aq5vZ9znscp5/Q7/Tq9
@@ -74,23 +77,23 @@ class Sorter:
         self.text_box.pack()
 
         # Defining buttons
-        self.sort_button = tk.Button(self.root, text='Sort', padx=50, pady=5, fg='white', bg=background_colour, command=self.sort_clicked)
+        self.sort_button = tk.Button(self.root, text='Sort', padx=50, pady=5, fg='white', bg=background_colour, highlightbackground=background_colour if self.platform_osx else None, command=self.sort_clicked)
         self.sort_button.place(x=(app_width / 2 - 50), y=660)
 
-        self.help_button = tk.Button(self.root, text='Help', padx=20, pady=5, fg='white', bg=background_colour, command=self.help_clicked)
+        self.help_button = tk.Button(self.root, text='Help', padx=20, pady=5, fg='white', bg=background_colour, highlightbackground=background_colour if self.platform_osx else None, command=self.help_clicked)
         self.help_button.place(x=27,y=660)
 
         # Change colour buttons
-        self.colour1 = tk.Button(self.root, padx=20, pady=5, bg='black', command=lambda : self.set_colours(bg='black', cursor='white'))
+        self.colour1 = tk.Button(self.root, padx=20, pady=5, bg='black', highlightbackground='black' if self.platform_osx else None, command=lambda : self.set_colours(bg='black', cursor='white'))
         self.colour1.place(x=(app_width/2 + 150 - 28), y=660)
 
-        self.colour2 = tk.Button(self.root, padx=20, pady=5, bg='#263D42', command=lambda : self.set_colours(bg='#263D42', cursor='white'))
+        self.colour2 = tk.Button(self.root, padx=20, pady=5, bg='#263D42', highlightbackground='#263D42' if self.platform_osx else None, command=lambda : self.set_colours(bg='#263D42', cursor='white'))
         self.colour2.place(x=(app_width/2 + 200 - 28), y=660)
 
-        self.colour3 = tk.Button(self.root, padx=20, pady=5, bg='#063970', command=lambda : self.set_colours(bg='#063970', cursor='white'))
+        self.colour3 = tk.Button(self.root, padx=20, pady=5, bg='#063970', highlightbackground='#063970' if self.platform_osx else None, command=lambda : self.set_colours(bg='#063970', cursor='white'))
         self.colour3.place(x=(app_width/2 + 250 - 28), y=660)
 
-        self.colour4 = tk.Button(self.root, padx=20, pady=5, bg='#2596be', command=lambda : self.set_colours(bg='#2596be', cursor='white'))
+        self.colour4 = tk.Button(self.root, padx=20, pady=5, bg='#2596be', highlightbackground='#2596be' if self.platform_osx else None, command=lambda : self.set_colours(bg='#2596be', cursor='white'))
         self.colour4.place(x=(app_width/2 + 300 - 28), y=660)
 
         # Loop to run continously (runs application)
@@ -143,8 +146,8 @@ class Sorter:
         self.background_colour = bg
         self.canvas.configure(bg=bg)
         self.text_box.configure(fg=fg, bg=bg, insertbackground=cursor)
-        self.sort_button.configure(fg=fg, bg=bg,)
-        self.help_button.configure(fg=fg, bg=bg,)
+        self.sort_button.configure(fg=fg, bg=bg, highlightbackground=bg if self.platform_osx else None)
+        self.help_button.configure(fg=fg, bg=bg, highlightbackground=bg if self.platform_osx else None)
 
 # Run Application
 Sorter()
