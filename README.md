@@ -26,7 +26,7 @@ https://en.wikipedia.org/wiki/Wikipedia:Wikipedia_is_not_a_reliable_source
 
 ## Usage - GUI
 Simply run the sorter GUI by using the following command:
-`python3 sorter_gui.py`
+`python3 sorter_gui.py`. Note that this will be **much faster** than using the provided executable (Reference Sorter.exe) for windows which takes longer to start up. The executable is simply provided for those who either do not know how to use a terminal and for easy distribution.
 
 Paste the references into the text box provided (empty lines will be ignored) and click the sort button to sort the references.
 
